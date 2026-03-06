@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Machado | Senior PM & Scrum Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans leading-relaxed" x-data="{ 
+    name: 'Carlos Machado',
+    yearsExp: '8+',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=300&h=300', companies: ['Globant', 'Accenture', 'TechFlow', 'Startup Hub'],
+    projects: [
+        { title: 'Migración Cloud ERP', role: 'Project Manager', impact: 'Ahorro del 15% en costos operativos', tags: ['Azure', 'Kanban'] },
+        { title: 'App Fintech MVP', role: 'Scrum Master', impact: 'Lanzamiento en 3 meses', tags: ['Scrum', 'Fintech'] }
+    ]
+}">
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="font-black text-xl tracking-tighter uppercase" x-text="name"></span>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#proyectos" class="hover:text-blue-600 transition">Proyectos</a>
+                <a href="#habilidades" class="hover:text-blue-600 transition">Habilidades</a>
+                <a href="mailto:carlos.machado@email.com" class="text-blue-600 border-b-2 border-blue-600">Contactar</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="max-w-5xl mx-auto px-6 pt-16 pb-12">
+        <div class="flex flex-col md:flex-row items-center gap-10">
+            <div class="relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur opacity-25"></div>
+                <img :src="photo" alt="Carlos Machado" class="relative w-48 h-48 md:w-64 md:h-64 rounded-2xl object-cover shadow-2xl grayscale hover:grayscale-0 transition duration-500">
+            </div>
+
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+                    Hola, soy <span class="text-blue-600" x-text="name"></span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-8 max-w-2xl">
+                    Project Manager & Scrum Master especializado en **escalar productos digitales** y optimizar el rendimiento de equipos remotos.
+                </p>
+                
+                <div class="flex flex-wrap justify-center md:justify-start gap-8 border-t border-slate-200 pt-8">
+                    <div>
+                        <p class="text-3xl font-bold text-slate-900" x-text="yearsExp"></p>
+                        <p class="text-sm text-slate-500 uppercase tracking-widest">Años Exp.</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-slate-900">40+</p>
+                        <p class="text-sm text-slate-500 uppercase tracking-widest">Proyectos</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold text-slate-900">Agile</p>
+                        <p class="text-sm text-slate-500 uppercase tracking-widest">Expertise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-white border-y border-slate-200 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-8">He liderado equipos en estas compañías</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale">
+                <template x-for="company in companies">
+                    <span class="text-2xl font-bold text-slate-800 tracking-tighter" x-text="company"></span>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="max-w-5xl mx-auto px-6 py-20">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl font-bold">Proyectos de Impacto</h2>
+                <p class="text-slate-500 mt-2">Enfoque en resultados medibles y entrega continua.</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <template x-for="project in projects" :key="project.title">
+                <div class="group bg-white p-8 rounded-3xl border border-slate-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg uppercase" x-text="project.role"></span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-600 transition" x-text="project.title"></h3>
+                    <p class="text-slate-600 mb-6 italic" x-text="`“${project.impact}”`"></p>
+                    <div class="flex flex-wrap gap-2">
+                        <template x-for="tag in project.tags">
+                            <span class="text-[10px] bg-slate-100 px-2 py-1 rounded text-slate-500 font-bold tracking-wider uppercase" x-text="tag"></span>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <footer class="max-w-5xl mx-auto px-6 py-12 border-t border-slate-200">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-slate-500 text-sm">© 2026 Carlos Machado — Built with Agile Flow.</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-blue-600 font-medium">LinkedIn</a>
+                <a href="#" class="text-slate-400 hover:text-blue-600 font-medium">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
